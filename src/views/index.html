@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>JShort</title>
+		<link rel="stylesheet" href="/styles/style.css">
+		<link rel="icon" href="/favicon.ico"/>
+	</head>
+	<body>
+
+		<h1>Easily shorten urls</h1>
+
+		<form action="/create" method="post">
+			<label for="url">URL: </label>
+			<input type="url" name="url" id="url" placeholder="https://JShort.epicgamer007.repl.co" required autocomplete="off">
+			<label for="id">ID: </label>
+			<input type="text" name="id" id="id" autocomplete="off" placeholder="Leave empty for random id">
+			<br>
+			<button type="submit">Submit</button>
+		</form>
+
+		
+	</body>
+</html>
