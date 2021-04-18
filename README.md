@@ -1,78 +1,13 @@
-```java
+# JShort
 
+For http servers, I normally use nodejs. However, I recently found a [http framework based on expressjs](https://github.com/Simonwep/java-express/). Thats cool and all, but what made it special? It was made in java. I decided to remake my node [url shortener](https://replit.com/@EpicGamer007/short) in java. This is the final result, and I am pretty proud. I had bumped into a few obstacles along the way but in the end, I was able to get them fixed.
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+## Libs used
 
-public class Temp {
-	public static void main(String[] args) throws IOException {
-		Path rootDir = Paths.get(args[0]);
+* [java-express](https://github.com/Simonwep/java-express/)
+* [slf4j](https://github.com/qos-ch/slf4j) (A dependency used by java-express)
+* [ReplitDBClient](https://github.com/EpicGamer007/ReplitDBClient) (My own client! :D)
 
-        if (!Files.exists(rootDir) || !Files.isDirectory(rootDir)) {
-            throw new IOException(rootDir + " does not exists or isn't a directory.");
-        }
-	}
-}
+I find it a great learning experience and has got me interested in Java again.
 
-```
-
-```java
-
-// javac -cp ./lib/express.jar Temp.java
-// java -cp .:./lib/express.jar Temp
-
-import express.Express;
-import express.middleware.Middleware;
-
-public class Temp {
-	public static void main(String[] args) throws java.io.IOException {
-		// Create instance
-		Express app = new Express() {{
-			// Define middleware-route for static site
-			use("/", Middleware.statics("temp/"));
-		}};
-		app.listen(8080);
-	}
-}
-
-```
-
-```java
-
-import express.Express;
-import express.middleware.Middleware;
-
-import java.io.IOException;
-import java.nio.file.*;
-
-class Main {
-
-	public static void main(String[] args) throws Exception {
-		Express app = setupApp();
-		app.listen(8080);
-	}
-
-	private static Express setupApp() {
-
-		Express app = new Express();
-
-		try {
-
-			app.use(
-				Middleware.statics(
-					"/home/runner/JShort/hi"
-				)
-			);
-
-		} catch(IOException ioe) {
-			ioe.printStackTrace();
-			System.exit(2);
-		}
-
-		return app;
-	}
-}
-
-```
+> Hope you enjoy ;)

@@ -50,11 +50,11 @@ public class Router {
 		
 		res.setContentType("text/html");
 
-		if(key.equals("create")) {
-			res.send("<!DOCTYPE html><html lang=\"en\"> <head><meta charset=\"utf-8\"> <title>Url created!</title><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><link rel=\"stylesheet\" href=\"/styles/style.css\"><link rel=\"icon\"  href=\"/favicon.ico\"/></head><body>Illegal id <code>create</code> has been passed as id.</body></html>");
+		if(key.equals("create") || key.equals("favicon.ico")) {
+			res.send("<!DOCTYPE html><html lang=\"en\"> <head><meta charset=\"utf-8\"> <title>Url created!</title><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><link rel=\"stylesheet\" href=\"/styles/style.css\"><link rel=\"icon\"  href=\"/images/favicon.ico\"/></head><body>Illegal id <code>" + key + "</code> has been passed as id.</body></html>");
 			return;
 		} else if(cache.containsKey(key)) {
-			res.send("<!DOCTYPE html><html lang=\"en\"> <head><meta charset=\"utf-8\"> <title>Url created!</title><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><link rel=\"stylesheet\" href=\"/styles/style.css\"><link rel=\"icon\"  href=\"/favicon.ico\"/></head><body>The key <code>" + key + "</code> is taken.</body></html>");
+			res.send("<!DOCTYPE html><html lang=\"en\"> <head><meta charset=\"utf-8\"> <title>Url created!</title><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><link rel=\"stylesheet\" href=\"/styles/style.css\"><link rel=\"icon\"  href=\"/images/favicon.ico\"/></head><body>The key <code>" + key + "</code> is taken.</body></html>");
 			return;
 		}
 
@@ -75,20 +75,13 @@ public class Router {
 		cache.put(key, value);
 		
 		res.send(
-			"<!DOCTYPE html><html lang=\"en\"> <head><meta charset=\"utf-8\"> <title>Url created!</title><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><link rel=\"stylesheet\" href=\"/styles/style.css\"><link rel=\"icon\"  href=\"/favicon.ico\"/></head><body><h1>The url was succesfully created with this being passed:<br><code>" +
+			"<!DOCTYPE html><html lang=\"en\"> <head><meta charset=\"utf-8\"> <title>Url created!</title><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><link rel=\"stylesheet\" href=\"/styles/style.css\"><link rel=\"icon\"  href=\"/images/favicon.ico\"/></head><body><h1>The url was succesfully created with this being passed:<br><code>" +
 			e +
 			"</code><br><br>Your url is at <a href=\"/" + key +
 			"\" id=\"the-url\">" + 
 			"/" + key + 
 			"</a></h1></body></html>"
 		);
-
-	}
-
-	@DynExpress(context = "/favicon.ico")
-	public void getFavicon(Request req, Response res) {
-
-		res.redirect("/images/favicon.ico");
 
 	}
 
